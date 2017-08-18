@@ -21,8 +21,12 @@ h4{font-size:16px;}
 
 .mybody{margin-top: 100px;}
 /* nav */
+.navbar-brand{ color:#FFFFFF}
+.navbar-brand .r{ color:#BF090C}
+.navbar-brand .g{ color:#0C980A}
+.navbar-brand .b{ color:#092D8E}
 .navbar-trans {
-    background-color: transparent;
+    background-color: rgba(0,0,0,0);
     border: none;
     transition: top 1s ease;
 }
@@ -91,29 +95,49 @@ a.mybuttons:hover {
 .stylenav{ margin: auto}
 
 .stylenav ul{ border: dashed 1px #FFFFFF}
-.stylenav ul li{ margin: auto; text-align: center; height: 200px; width: 24%; border: dashed 1px #FFFFFF}
+.stylenav ul li{ margin: auto; text-align: center; }
 .stylenav ul li{margin: 0px; padding: 0px}
 .stylenav ul li:hover{margin: 0px; padding: 0px}
 
 a.filterbutton {
     display: block;
     margin: 20px ;
-    width: 130px;
-    height: 130px;
-    line-height: 130px;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
     text-decoration: none;
-    padding: 30px;
-    border: 1px solid #FFFFFF;
+    padding: 0px;
+    border: 1px solid rgba(255,255,255,.2);
     color: #FFFFFF;
     border-radius: 100%;
     text-transform: uppercase;
     vertical-align: middle;
+	-webkit-transition: all linear .3s;
+	
 }
 a.filterbutton:hover {
-    padding: 20px;
-    width: 140px;
-    height: 140px;
     background-color: rgba(255, 255, 255, 0.5);
+	width:140px;
+	height:140px;
+	margin:0px;
+	
 }
 
+/* canvas */
+
+#magicHere{ display:none}
+
+#fileUp-input{
+	height:400px !important;
+	width:400px !important;
+	background-color:rgba(255, 255, 255, 0);
+	text-align:center;
+	border:#FFFFFF 1px dashed;
+	outline: 2px dashed #92b0b3;
+    outline-offset: -10px;
+    -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
+    transition: outline-offset .15s ease-in-out, background-color .15s linear;
+    padding: 120px 0px 85px 35%;
+    margin: 0;
+}
 

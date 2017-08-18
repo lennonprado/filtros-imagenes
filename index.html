@@ -17,7 +17,9 @@
         <div class="container">
             <!-- left nav top -->
             <ul class="nav navbar-nav pull-left">
-                <div class="navbar-brand" href="#">LEGRAM</div>
+                <div class="navbar-brand" href="#">
+                	<span class="r">r</span><span class="g">g</span><span class="b">b</span>.lab
+                </div>
             </ul>
             <!-- right nav top -->
             <ul class="nav navbar-nav pull-right">
@@ -30,26 +32,31 @@
 </nav>
 <!--bg img  -->
 <div class="container mybody">
-    <h1>Amazing Photo Effects</h1>
-    <h4>Select one type and  enjoy amazing image filters</h4>
-    <a href="#" class="btn mybuttons" onclick="">Get Started</a>
-
-
-
-    <div class="stylenav">
-        <ul class="list-inline">
-            <li class="list-inline-item"><a class="filterbutton" href="">negative</a></li>
-            <li class="list-inline-item"><a class="filterbutton" href="">brightness</a></li>
-            <li class="list-inline-item"><a class="filterbutton" href="">binarization</a></li>
-            <li class="list-inline-item"><a class="filterbutton" href="">sepia</a></li>
-        </ul>
+    <div class="row">
+        <div class="col-md-6">
+            <h1>Amazing Photo Effects</h1>
+            <h4>Select one type and  enjoy amazing image filters</h4>
+        </div>
+        <div class="col-md-6">.col-md-6
+            <canvas id="magicHere"></canvas>
+        </div>
     </div>
-
+    <div class="row">
+        <div class="stylenav">
+            <ul class="list-inline">
+                <li class="list-inline-item"><a class="filterbutton" href="">negative</a></li>
+                <li class="list-inline-item"><a class="filterbutton" href="">brightness</a></li>
+                <li class="list-inline-item"><a class="filterbutton" href="">binarization</a></li>
+                <li class="list-inline-item"><a class="filterbutton" href="">sepia</a></li>
+            </ul>
+        </div>
+    </div>
 </div>
-
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.min.js"></script>
+<script src="js/custom.js"></script>
+
 </body>
 </html>
