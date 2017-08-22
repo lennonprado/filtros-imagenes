@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>LEGRAM</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/custom.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.1/css/bootstrap-slider.min.css" rel="stylesheet">
+    <link href="css/custom.css?" rel="stylesheet">
 
 </head>
 <body>
@@ -37,25 +38,31 @@
             <h1>Amazing Photo Effects</h1>
             <h4>Select one type and  enjoy amazing image filters</h4>
         </div>
-        <div class="col-md-6">.col-md-6
+        <div class="col-md-6">
+            <input type="file" id="fileUp-input" onchange="subir()" webkitdirectory />
             <canvas id="magicHere"></canvas>
         </div>
     </div>
     <div class="row">
         <div class="stylenav">
             <ul class="list-inline">
-                <li class="list-inline-item"><a class="filterbutton" href="">negative</a></li>
-                <li class="list-inline-item"><a class="filterbutton" href="">brightness</a></li>
-                <li class="list-inline-item"><a class="filterbutton" href="">binarization</a></li>
-                <li class="list-inline-item"><a class="filterbutton" href="">sepia</a></li>
+                <li class="list-inline-item"><a class="filterbutton" href="#" onclick="negative()">negative</a></li>
+                <li class="list-inline-item"><a class="filterbutton" href="#" onclick="brighness()">brightness</a></li>
+                <li class="list-inline-item"><a class="filterbutton" href="#" onclick="grey()">grey</a></li>
+                <li class="list-inline-item"><a class="filterbutton" href="#" onclick="sepia()">sepia</a></li>
             </ul>
         </div>
+  <!-- http://seiyria.com/bootstrap-slider/ -->
+        <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="255" data-slider-step="1" data-slider-value="128" />
     </div>
 </div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.1/bootstrap-slider.min.js"></script>
+
+
 <script src="js/custom.js"></script>
 
 </body>

@@ -94,16 +94,14 @@ a.mybuttons:hover {
 /* filters */
 .stylenav{ margin: auto}
 
-.stylenav ul{ border: dashed 1px #FFFFFF}
+.stylenav ul{}
 .stylenav ul li{ margin: auto; text-align: center; }
-.stylenav ul li{margin: 0px; padding: 0px}
-.stylenav ul li:hover{margin: 0px; padding: 0px}
 
 a.filterbutton {
     display: block;
     margin: 20px ;
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     line-height: 100px;
     text-decoration: none;
     padding: 0px;
@@ -113,31 +111,37 @@ a.filterbutton {
     text-transform: uppercase;
     vertical-align: middle;
 	-webkit-transition: all linear .3s;
-	
+
 }
 a.filterbutton:hover {
-    background-color: rgba(255, 255, 255, 0.5);
-	width:140px;
-	height:140px;
-	margin:0px;
-	
+  background-color: rgba(255, 255, 255, 0.5);
+	width:120px;
+	height:120px;
+	padding:10px;
+
 }
 
 /* canvas */
 
-#magicHere{ display:none}
+#magicHere{	height:400px !important;
+	width:400px !important; display:none}
 
 #fileUp-input{
 	height:400px !important;
 	width:400px !important;
 	background-color:rgba(255, 255, 255, 0);
 	text-align:center;
-	border:#FFFFFF 1px dashed;
 	outline: 2px dashed #92b0b3;
     outline-offset: -10px;
     -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
     transition: outline-offset .15s ease-in-out, background-color .15s linear;
-    padding: 120px 0px 85px 35%;
+    padding: 100px 0px 0px 5%;
     margin: 0;
 }
 
+
+/* slider */
+
+#ex1Slider .slider-selection {
+	background: #BABABA;
+}
