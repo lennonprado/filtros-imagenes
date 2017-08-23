@@ -1,26 +1,58 @@
 
 
 	var x = null;
-	var ctx = null;
-	var image1 = null;
+	var context = null;
+	var $img = null;
 	var imageData = null;
 
-	var slider = new Slider('#ex1', {
+	var slider1 = new Slider('#ex1', {
 		formatter: function(value) {
 			return 'Current value: ' + value;
 		}
 	});
+/*	var slider2 = new Slider('#bl1', {
+		formatter: function(value) {
+			return 'Current value: ' + value;
+		}
+	});
+*/
+
+	$(function() {
+	    $('#file-input').change(function(e) {
+	        var file = e.target.files[0],
+	            imageType = /image.*/;
+	        if (!file.type.match(imageType))
+	            return;
+	        var reader = new FileReader();
+	        reader.onload = fileOnload;
+	        reader.readAsDataURL(file);
+					$('#magicHere').show();
+					$('.file-input-content').hide();
+	    });
+
+	    function fileOnload(e) {
+	        var $img = $('<img>', { src: e.target.result });
+	        var canvas = $('#magicHere')[0];
+	        context = canvas.getContext('2d');
+	        $img.load(function() {
+	            context.drawImage(this, 0, 0);
+							imageData = context.getImageData(0,0,this.width,this.height);
+							context.putImageData(imageData,0,0);
+	        });
+	    }
+	});
 
 
-	function subir(){
+
+	function ssubir(){
 		x=document.getElementById('fileUp-input');
-		ctx = document.getElementById("magicHere").getContext("2d");
-		image1 = new Image();
-		image1.src=x.files[0].name;
-		image1.onload = function(){
-			ctx.drawImage(image1,0,0);
-			imageData = ctx.getImageData(0,0,image1.width,image1.height);
-			ctx.putImageData(imageData,0,0);
+		context = document.getElementById("magicHere").getContext("2d");
+		$img = new Image();
+		$img.src=x.files[0].name;
+		$img.onload = function(){
+			context.drawImage($img,0,0);
+				imageData = context.getImageData(0,0,$img.width,$img.height);
+			context.putImageData(imageData,0,0);
 		}
 		$('#magicHere').show();
 		$('.file-input-content').hide();
@@ -28,8 +60,8 @@
 
 
 	function brighness(){
-		for(var x=0; x<image1.width; x++){
-			for(var y=0; y<image1.height; y++){
+		for(var x=0; x<imageData.width; x++){
+			for(var y=0; y<imageData.height; y++){
 				var R = getRed(imageData,x,y);
 				var G = getGreen(imageData,x,y);
 				var B = getBlue(imageData,x,y);
@@ -37,13 +69,13 @@
 				setGreen(imageData,x,y,G+10);
 				setBlue(imageData,x,y,B+10);
 			}
-		ctx.putImageData(imageData,0,0);
+		context.putImageData(imageData,0,0);
 		}
 	}
 
 	function negative(){
-		for(var x=0; x<image1.width; x++){
-			for(var y=0; y<image1.height; y++){
+		for(var x=0; x<imageData.width; x++){
+			for(var y=0; y<imageData.height; y++){
 				var R = getRed(imageData,x,y);
 				var G = getGreen(imageData,x,y);
 				var B = getBlue(imageData,x,y);
@@ -52,12 +84,12 @@
 				setBlue(imageData,x,y,255-B);
 			}
 		}
-		ctx.putImageData(imageData,0,0);
+		context.putImageData(imageData,0,0);
 	}
 
 	function grey(){
-		for(var x=0; x<image1.width; x++){
-			for(var y=0; y<image1.height; y++){
+		for(var x=0; x<imageData.width; x++){
+			for(var y=0; y<imageData.height; y++){
 				var R = getRed(imageData,x,y);
 				var G = getGreen(imageData,x,y);
 				var B = getBlue(imageData,x,y);
@@ -67,13 +99,13 @@
 				setBlue(imageData,x,y,todos);
 			}
 		}
-		ctx.putImageData(imageData,0,0);
+		context.putImageData(imageData,0,0);
 	}
 
 
 	function sepia(){
-		for(var x=0; x<image1.width; x++){
-			for(var y=0; y<image1.height; y++){
+		for(var x=0; x<imageData.width; x++){
+			for(var y=0; y<imageData.height; y++){
 				var R = getRed(imageData,x,y);
 				var G = getGreen(imageData,x,y);
 				var B = getBlue(imageData,x,y);
@@ -85,7 +117,7 @@
 				setBlue(imageData,x,y,tb);
 			}
 		}
-		ctx.putImageData(imageData,0,0);
+		context.putImageData(imageData,0,0);
 	}
 
 
@@ -94,8 +126,8 @@
         quantity = $('#ex1').val();
         var data = imageData;
         console.log(quantity);
-        for(var x=0; x<image1.width; x++){
-            for(var y=0; y<image1.height; y++){
+        for(var x=0; x<imageData.width; x++){
+            for(var y=0; y<imageData.height; y++){
             	//red channel
                 if(getRed(data,x,y)>quantity)
                     setRed(data,x,y,255);
@@ -113,34 +145,124 @@
 	                setBlue(data,x,y,0);
             }
         }
-        ctx.putImageData(data,0,0);
+        context.putImageData(data,0,0);
     }
 
+
+
+	function blurRange(){
+			var data=imageData;
+  		var quantity = $('#bl1').val();
+
+			for(var x=0; x<imageData.width; x++){
+					for(var y=0; y<imageData.height; y++){
+			// around
+			cantR = 0;
+			cantG = 0;
+			cantB = 0;
+			sum = 0;
+			for(j=x-1;j<=x+1;j++) {
+									for (k = y - quantity; k <= y + quantity; k++) {
+										if((j>0) && (k>0)) {
+													cantR = cantR + getRed(imageData, j, k);
+													cantG = cantG + getGreen(imageData, j, k);
+													cantB = cantB + getBlue(imageData, j, k);
+													sum++;
+											}
+									}
+							}
+							setRed(data,x,y,cantR/sum);
+							setGreen(data,x,y,cantG/sum);
+							setBlue(data,x,y,cantB/sum);
+					}
+			}
+			context.putImageData(data,0,0);
+	}
+
     function smoothing(){
-        for(var x=0; x<image1.width; x++){
-            for(var y=0; y<image1.height; y++){
+				var data=imageData;
+				var cantidadVecinos = 1
+        for(var x=0; x<imageData.width; x++){
+            for(var y=0; y<imageData.height; y++){
 				// around
 				cantR = 0;
-                cantG = 0;
-                cantB = 0;
+        cantG = 0;
+        cantB = 0;
 				sum = 0;
 				for(j=x-1;j<=x+1;j++) {
-                    for (k = y - 1; k <= y + 1; k++) {
-                    	if((j>0) && (k>0)) {
-                            cantR = cantR + getRed(imageData, j, k);
-                            cantG = cantG + getGreen(imageData, j, k);
-                            cantB = cantB + getBlue(imageData, j, k);
-                            sum++;
-                        }
-                    }
+            for (k = y - 1; k <= y + 1; k++) {
+            	if((j>0) && (k>0)) {
+                    cantR = cantR + getRed(imageData, j, k);
+                    cantG = cantG + getGreen(imageData, j, k);
+                    cantB = cantB + getBlue(imageData, j, k);
+                    sum++;
                 }
-                setRed(imageData,x,y,cantR/sum);
-                setGreen(imageData,x,y,cantG/sum);
-                setBlue(imageData,x,y,cantB/sum);
             }
         }
-        ctx.putImageData(imageData,0,0);
+          setRed(data,x,y,cantR/sum);
+          setGreen(data,x,y,cantG/sum);
+          setBlue(data,x,y,cantB/sum);
+            }
+        }
+        context.putImageData(data,0,0);
     }
+
+		function sobelH(){
+			var kernelX = [
+	      [-1,0,1],
+	      [-2,0,2],
+	      [-1,0,1]
+	    ];
+
+
+			sobel(kernelX);
+		}
+		function sobelV(){
+			var kernelY = [
+	      [-1,-2,-1],
+	      [0,0,0],
+	      [1,2,1]
+	    ];
+			sobel(kernelY);
+		}
+		function sobelB(){
+				// todo por 1/9
+				var kernelB = [
+					[1/9,1/9,1/9],
+					[1/9,1/9,1/9],
+					[1/9,1/9,1/9]
+				];
+				sobel(kernelB);
+
+		}
+
+
+		function sobel(mat){
+
+				var im = clone(imageData);
+        for(var x=1; x<imageData.width-1; x++){
+            for(var y=1; y<imageData.height-1; y++){
+								// red channel
+								var pixelSobel =
+										getRed(im,x-1,y-1) * mat[0][0] +
+										getRed(im,x,y-1) * mat[0][1] +
+										getRed(im,x+1,y-1) * mat[0][2] +
+										getRed(im,x-1,y) * mat[1][0] +
+										getRed(im,x,y) * mat[1][1] +
+										getRed(im,x+1,y) * mat[1][2] +
+										getRed(im,x-1,y+1) * mat[2][0] +
+										getRed(im,x,y+1) * mat[2][1] +
+										getRed(im,x+1,y+1) * mat[2][2];
+
+                setRed(imdata2,x,y,pixelSobel);
+                setGreen(imdata2,x,y,pixelSobel);
+                setBlue(imdata2,x,y,pixelSobel);
+            }
+        }
+        context.putImageData(imageData,0,0);
+    }
+
+
 
 
 

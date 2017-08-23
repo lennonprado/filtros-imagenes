@@ -37,9 +37,11 @@
             <h1>Amazing Photo Effects</h1>
             <h4>Select a photo in the app directory and enjoy the amazing image filters available</h4>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 ">
+          <div class="text-center">
+
             <div class="file-input-content">
-                <input type="file" id="fileUp-input" onchange="subir()" />
+                <input type="file" id="file-input"  />
             </div>
 
 
@@ -47,7 +49,12 @@
 
 
             <canvas id="magicHere"></canvas>
+            <a href="#" onclick="subir()"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></a>
+            <a href="#" onclick=""><span class="glyphicon glyphicon-download" aria-hidden="true"></span></a>
+
         </div>
+      </div>
+
     </div>
     <div class="row">
         <div class="stylenav text-center">
@@ -67,6 +74,15 @@
                 <li class="list-inline-item">
                     <a class="filterbutton" href="#" onclick="smoothing()">Smoothing</a>
                 </li>
+                <li class="list-inline-item">
+                    <a class="filterbutton" href="#" onclick="sobelH()">Sobel H </a>
+                </li>
+                <li class="list-inline-item">
+                    <a class="filterbutton" href="#" onclick="sobelV()">Sobel V </a>
+                </li>
+                <li class="list-inline-item">
+                    <a class="filterbutton" href="#" onclick="sobelB()">Sobel Blur </a>
+                </li>
             </ul>
         </div>
         <!-- http://seiyria.com/bootstrap-slider/ -->
@@ -75,6 +91,14 @@
                 <li class="list-inline-item">
                     <label for="ex1">Binarization
                         <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="255" data-slider-step="1" data-slider-value="128" onchange="binarization()" />
+                    </label>
+                </li>
+                <li class="list-inline-item">
+                    <label for="ex1">Blur
+                      <!--  <input id="bl1" data-slider-id='bl1Slider' type="text" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value="0" onchange="blur()" />-->
+
+                        <input id="bl1" type="range" max="10" min="0" step="1" defaultValue="0" value="0" onchange="blurRange()" />
+
                     </label>
                 </li>
             </ul>
