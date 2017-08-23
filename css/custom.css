@@ -1,30 +1,38 @@
-/*@import url("fonts.css");*/
-
+@import url('https://fonts.googleapis.com/css?family=Comfortaa|Handlee');
 body{
     background-image: url("../img/background.jpg");
     background-size:100% auto;
-
 }
 
 h1,h2,h3,h4{
     color:#fff;
     font-weight:100;
-    font-family:OpenSansLight,Arial,Helvetica,sans-serif;
+    font-family:'Handlee',Arial,Helvetica,sans-serif;
     line-height:1.4em;
 }
 
-h1{font-size:46px;}
+h1{font-size:85px;}
 h2{font-size:36px;}
-h3{font-size:26px;}
-h4{font-size:16px;}
+
+h4{font-size:36px;}
 
 
 .mybody{margin-top: 100px;}
 /* nav */
-.navbar-brand{ color:#FFFFFF}
+.navbar-brand{
+    color:#FFFFFF !important;
+    margin-top: 0px;
+    margin-top: 0px;
+    font-family:'Handlee',Arial,Helvetica,sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+
+
+}
 .navbar-brand .r{ color:#BF090C}
 .navbar-brand .g{ color:#0C980A}
 .navbar-brand .b{ color:#092D8E}
+.navbar-brand .resto{ color:#FFFFFF}
 .navbar-trans {
     background-color: rgba(0,0,0,0);
     border: none;
@@ -104,7 +112,7 @@ a.filterbutton {
     height: 120px;
     line-height: 100px;
     text-decoration: none;
-    padding: 0px;
+    padding: 10px;
     border: 1px solid rgba(255,255,255,.2);
     color: #FFFFFF;
     border-radius: 100%;
@@ -125,18 +133,22 @@ a.filterbutton:hover {
 
 #magicHere{	height:400px !important;
 	width:400px !important; display:none}
+.file-input-content{
+    height:400px !important;
+    width:400px !important;
+    background-color:rgba(255, 255, 255, 0);
+    outline: 2px dashed #92b0b3;
+    outline-offset: -10px;
+    padding: 185px 150px 185px 150px;
+    padding: 185px 150px 185px 150px;
+    margin: 0px;
+}
 
 #fileUp-input{
-	height:400px !important;
-	width:400px !important;
-	background-color:rgba(255, 255, 255, 0);
+    width: 100px;
+    height: 30px;
 	text-align:center;
-	outline: 2px dashed #92b0b3;
-    outline-offset: -10px;
-    -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
-    transition: outline-offset .15s ease-in-out, background-color .15s linear;
-    padding: 100px 0px 0px 5%;
-    margin: 0;
+    background-color:rgba(255, 255, 255, 0);
 }
 
 
@@ -144,4 +156,18 @@ a.filterbutton:hover {
 
 #ex1Slider .slider-selection {
 	background: #BABABA;
+}
+.list-inline-item label{
+    display: block;
+    width: 100%;
+    margin: 20px ;
+    text-decoration: none;
+    padding: 10px;
+    border: 1px solid rgba(255,255,255,.2);
+    color: #FFFFFF;
+    border-radius: 10px;
+    text-transform: uppercase;
+    vertical-align: middle;
+    -webkit-transition: all linear .3s;
+    font-weight: normal;
 }

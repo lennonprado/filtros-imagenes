@@ -4,11 +4,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>LEGRAM</title>
+    <title>Amazing Photo Effects</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.1/css/bootstrap-slider.min.css" rel="stylesheet">
     <link href="css/custom.css?" rel="stylesheet">
-
 </head>
 <body>
 
@@ -19,7 +18,7 @@
             <!-- left nav top -->
             <ul class="nav navbar-nav pull-left">
                 <div class="navbar-brand" href="#">
-                	<span class="r">r</span><span class="g">g</span><span class="b">b</span>.lab
+                    <span class="r">r</span><span class="g">g</span><span class="b">b</span><span class="resto">.lab</span>
                 </div>
             </ul>
             <!-- right nav top -->
@@ -36,34 +35,55 @@
     <div class="row">
         <div class="col-md-6">
             <h1>Amazing Photo Effects</h1>
-            <h4>Select one type and  enjoy amazing image filters</h4>
+            <h4>Select a photo in the app directory and enjoy the amazing image filters available</h4>
         </div>
         <div class="col-md-6">
-            <input type="file" id="fileUp-input" onchange="subir()" webkitdirectory />
+            <div class="file-input-content">
+                <input type="file" id="fileUp-input" onchange="subir()" />
+            </div>
+
+
+
+
+
             <canvas id="magicHere"></canvas>
         </div>
     </div>
     <div class="row">
-        <div class="stylenav">
+        <div class="stylenav text-center">
             <ul class="list-inline">
-                <li class="list-inline-item"><a class="filterbutton" href="#" onclick="negative()">negative</a></li>
-                <li class="list-inline-item"><a class="filterbutton" href="#" onclick="brighness()">brightness</a></li>
-                <li class="list-inline-item"><a class="filterbutton" href="#" onclick="grey()">grey</a></li>
-                <li class="list-inline-item"><a class="filterbutton" href="#" onclick="sepia()">sepia</a></li>
+                <li class="list-inline-item">
+                    <a class="filterbutton" href="#" onclick="negative()">negative</a>
+                </li>
+                <li class="list-inline-item">
+                    <a class="filterbutton" href="#" onclick="brighness()">brightness</a>
+                </li>
+                <li class="list-inline-item">
+                    <a class="filterbutton" href="#" onclick="grey()">grey</a>
+                </li>
+                <li class="list-inline-item">
+                    <a class="filterbutton" href="#" onclick="sepia()">sepia</a>
+                </li>
+                <li class="list-inline-item">
+                    <a class="filterbutton" href="#" onclick="smoothing()">Smoothing</a>
+                </li>
             </ul>
         </div>
-  <!-- http://seiyria.com/bootstrap-slider/ -->
-        <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="255" data-slider-step="1" data-slider-value="128" />
+        <!-- http://seiyria.com/bootstrap-slider/ -->
+        <div class="stylenav text-center">
+            <ul class="list-inline">
+                <li class="list-inline-item">
+                    <label for="ex1">Binarization
+                        <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="255" data-slider-step="1" data-slider-value="128" onchange="binarization()" />
+                    </label>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.1/bootstrap-slider.min.js"></script>
-
-
 <script src="js/custom.js"></script>
-
 </body>
 </html>
