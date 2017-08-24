@@ -35,23 +35,14 @@
     <div class="row">
         <div class="col-md-6">
             <h1>Amazing Photo Effects</h1>
-            <h4>Select a photo in the app directory and enjoy the amazing image filters available</h4>
+            <h4>Select a photo and enjoy the amazing image filters available</h4>
         </div>
         <div class="col-md-6 ">
-          <div class="text-center">
-
+          <div class="contenedor-imagen">
             <div class="file-input-content">
                 <input type="file" id="file-input"  />
             </div>
-
-
-
-
-
-            <canvas id="magicHere"></canvas>
-            <a href="#" onclick="subir()"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></a>
-            <a href="#" onclick=""><span class="glyphicon glyphicon-download" aria-hidden="true"></span></a>
-
+            <canvas id="magicHere" width="400" height="400"></canvas>
         </div>
       </div>
 
@@ -63,16 +54,10 @@
                     <a class="filterbutton" href="#" onclick="negative()">negative</a>
                 </li>
                 <li class="list-inline-item">
-                    <a class="filterbutton" href="#" onclick="brighness()">brightness</a>
-                </li>
-                <li class="list-inline-item">
                     <a class="filterbutton" href="#" onclick="grey()">grey</a>
                 </li>
                 <li class="list-inline-item">
                     <a class="filterbutton" href="#" onclick="sepia()">sepia</a>
-                </li>
-                <li class="list-inline-item">
-                    <a class="filterbutton" href="#" onclick="smoothing()">Smoothing</a>
                 </li>
                 <li class="list-inline-item">
                     <a class="filterbutton" href="#" onclick="sobelH()">Sobel H </a>
@@ -85,20 +70,22 @@
                 </li>
             </ul>
         </div>
-        <!-- http://seiyria.com/bootstrap-slider/ -->
         <div class="stylenav text-center">
             <ul class="list-inline">
                 <li class="list-inline-item">
-                    <label for="ex1">Binarization
-                        <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="255" data-slider-step="1" data-slider-value="128" onchange="binarization()" />
+                    <label for="bi1">Binarization
+                        <input id="bi1" type="range" min="0" max="255" step="1" value="128" onchange="binarization()" />
                     </label>
                 </li>
                 <li class="list-inline-item">
-                    <label for="ex1">Blur
-                      <!--  <input id="bl1" data-slider-id='bl1Slider' type="text" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value="0" onchange="blur()" />-->
+                    <label for="bl1">Blur
+                        <input id="bl1" type="range" max="10" min="0" step="1" value="0" onchange="blurRange()" />
 
-                        <input id="bl1" type="range" max="10" min="0" step="1" defaultValue="0" value="0" onchange="blurRange()" />
-
+                    </label>
+                </li>
+                <li class="list-inline-item">
+                    <label for="bg1">Brighness
+                        <input id="bg1" type="range" max="99" min="0" step="1" value="50" onchange="brighness()" />
                     </label>
                 </li>
             </ul>
@@ -107,7 +94,6 @@
 </div>
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.1/bootstrap-slider.min.js"></script>
 <script src="js/custom.js"></script>
 </body>
 </html>
